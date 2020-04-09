@@ -28,7 +28,7 @@ if(demeter_moisture < 55):
 else:
 	print('    did not run pump 1');
 	print('    Demeter Moisture: ' + str(demeter_moisture));
-	rongo_sensors.update_cons_days_watered(0)
+	demeter_sensors.update_cons_days_watered(0)
 	
 if(rongo_moisture < 55):
 	run_time = 15
@@ -43,6 +43,6 @@ if(rongo_moisture < 55):
 else:
 	print('    did not run pump 2');
 	print('    Rongo Moisture: ' + str(rongo_moisture));
-	demeter_sensors.update_cons_days_watered(0)
+	rongo_sensors.update_cons_days_watered(0)
 
 pumps.cleanup()

@@ -75,3 +75,19 @@
     Demeter Moisture: 50.5
     ran pump 2
     Rongo Moisture: 49.291666666666664
+[('1', 'Demeter'), ('2', 'Rongo')]
+2020-04-06 18:00:02.425885
+    did not run pump 1
+    Demeter Moisture: 56.208333333333336
+    did not run pump 2
+    Rongo Moisture: 65.79166666666667
+2020-04-07 18:00:02.518680
+    ran pump 1
+    Demeter Moisture: 48.583333333333336
+    did not run pump 2
+    Rongo Moisture: 61.375
+2020-04-09 18:00:03.155555
+    did not run pump 1
+    Demeter Moisture: 63.166666666666664
+    ran pump 2
+    Rongo Moisture: 49.541666666666664

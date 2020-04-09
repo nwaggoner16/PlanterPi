@@ -158,7 +158,7 @@ class planter_by_id():
 		last_hours_temp = self.planter_sensor_data[-hours:]
 		last_hours_temp_np = numpy.array(last_hours_temp)
 		for p in last_hours_temp_np:
-			temperature_sum += p[7];
+			temperature_sum += p[3];
 		temperature_avg =  temperature_sum/hours
 		return temperature_avg	
 	
@@ -171,6 +171,26 @@ class planter_by_id():
 			humidity_sum += p[4];
 		humidity_avg =  humidity_sum/hours
 		return humidity_avg
+		
+	def avg_light(self, hours=24):
+		light_sum = 0
+		light_avg = 0
+		last_hours_h = self.planter_sensor_data[-hours:]
+		last_hours_h_np = numpy.array(last_hours_h)
+		for p in last_hours_h_np:
+			light_sum += p[5];
+		light_avg =  light_sum/hours
+		return light_avg
+		
+	def avg_soil_temperature(self, hours=24):
+		soil_temperature_sum = 0
+		soil_temperature_avg = 0
+		last_hours_h = self.planter_sensor_data[-hours:]
+		last_hours_h_np = numpy.array(last_hours_h)
+		for p in last_hours_h_np:
+			soil_temperature_sum += p[6];
+		soil_temperature_avg =  soil_temperature_sum/hours
+		return soil_temperature_avg
 
 	def update_cons_days_watered(self, days):
 		cursor.execute('update planter set cons_days_watered = {} where planter_id = {}'.format(days, self.planter_id))
@@ -210,6 +230,18 @@ class planter_by_id():
 			plot_array_moisture.append(pl[7])
 		return (plot_array_time), (plot_array_moisture) 
 		
+	def get_log_times(self):
+		return self.planter_sensor_data[:, 2]
+		
+	def get_soil_moisture(self):
+		return self.planter_sensor_data[:, 7]
+		
+	def get_temperature(self):
+		return self.planter_sensor_data[:, 3]
+	
+	def get_soil_temperature(self):
+		return self.planter_sensor_data[:, 6]
+		
 	
 
 class general_data():
@@ -225,7 +257,7 @@ class general_data():
 		
 # DEBUG		
 #rongo = planter_by_id(2)		
-#print(rongo.plot_moisture_data_test(24))
-debug_ob = general_data()
-print(debug_ob.get_planter_names())
+#print(rongo.get_soil_moisture())
+#debug_ob = general_data()
+#print(debug_ob.get_planter_names())
 
