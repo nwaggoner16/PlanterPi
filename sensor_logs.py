@@ -3,7 +3,7 @@
 #sys.path.append('/home/pi/PlanterPi/')
 #import hardware as hw
 from datetime import datetime
-from sqltest import session, sensor_data
+from sqltest import session, sensor_data, sensor_data_raw
 
 
 temperature = 75 #hw.read_temperature()
@@ -27,5 +27,15 @@ sensor_insert = sensor_data(
 	soil_temperature=soil_temperature,
 	soil_moisture=soil_moisture
 )
+sensor_insert_raw = sensor_data_raw(
+	planter_id=1,
+	temperature=temperature,
+	humidity=humidity,
+	light=light,
+	soil_temperature=soil_temperature,
+	soil_moisture=soil_moisture
+)
+
 session.add(sensor_insert)
+session.add(sensor_insert_raw)
 session.commit()

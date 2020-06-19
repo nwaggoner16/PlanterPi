@@ -3,12 +3,12 @@ sys.path.append("/Users/nathanwaggoner/PlanterPi/")
 #import pumps as p
 #import db as db
 from datetime import datetime
-from sqltest import session, sensor_data, plconfigs
+from sqltest import session, sensor_data, planter_config
 
 #Variables for average moisture calc
 moisture = 0
 m_count = 0
-
+plconfigs = session.query(planter_config).first()
 #Sensors contains
 sensors = session.query(sensor_data).order_by(sensor_data.log_id.desc()).limit(24)
 for s in sensors:
