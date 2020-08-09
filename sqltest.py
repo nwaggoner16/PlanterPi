@@ -71,6 +71,32 @@ class planter_config(Base):
 		return "Planter ID: {}, Consecutive Days Watered: {}, Run Speed: {}, Run Time: {}, Target Moisture: {}".format(
 		self.planter_id, self.cons_days_watered, self.run_speed, self.run_time, self.target_moisture)
 
+class mqtt_test(Base):
+	__tablename__='mqtt_test'
+
+	log_id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+	log_time = sqlalchemy.Column(sqlalchemy.DateTime, server_default='log_time')
+	planter_id = sqlalchemy.Column(sqlalchemy.Integer)
+	temperature = sqlalchemy.Column(sqlalchemy.DECIMAL)
+	humidity = sqlalchemy.Column(sqlalchemy.DECIMAL)
+	pressure = sqlalchemy.Column(sqlalchemy.Integer)
+	gas_resistance = sqlalchemy.Column(sqlalchemy.Integer)
+	altitude = sqlalchemy.Column(sqlalchemy.Integer)
+	soil_temperature = sqlalchemy.Column(sqlalchemy.Integer)
+	soil_moisture = sqlalchemy.Column(sqlalchemy.Integer)
+	ir = sqlalchemy.Column(sqlalchemy.Integer)
+	full = sqlalchemy.Column(sqlalchemy.Integer)
+	visible = sqlalchemy.Column(sqlalchemy.Integer)
+	lux = sqlalchemy.Column(sqlalchemy.DECIMAL)
+
+	
+	def __repr__(self):
+		return "Log ID: {}, Log Time: {}, Planter ID: {}, Temperature: {}, Humidity: {}, Pressure: {}, Gas Resistance: {}, Altitude: {},\
+		Soil Temperature: {}, Soil Moisture: {}, IR: {}, Full: {}, Visible: {}, Lux: {}".format(
+		self.planter_id, self.temperature, self.humidity, self.pressure, self.gas_resistance, self.altitude, self.soil_moisture,
+			self.ir, self.full, self.visible, self.lux)
+
+
 Base.metadata.create_all(engine)
 
 # Create a session
